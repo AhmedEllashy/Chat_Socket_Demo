@@ -1,0 +1,6 @@
+framework module Pods_Chat_Socket_Practice {
+  umbrella header "Pods-Chat_Socket_Practice-umbrella.h"
+
+  export *
+  module * { export * }
+}
