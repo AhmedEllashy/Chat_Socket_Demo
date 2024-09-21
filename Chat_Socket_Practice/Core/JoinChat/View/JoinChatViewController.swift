@@ -8,22 +8,31 @@
 import UIKit
 
 class JoinChatViewController: UIViewController {
+    //MARK: - Properties
+    
+    //MARK: - UIViews
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var welcomeLabel: UILabel!
 
+    
+    //MARK: -  Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
+    //MARK: -  IBActions
+    @IBAction func joinChatButtonPressed(_ sender: UIButton){
+        if let safeText = nameTextField.text {
+             UserDefaults.standard.set(safeText, forKey: "current_user")
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+           SocketHelper.shared.joinChatRoom(name: safeText) {
+               let vc = ChatListViewController()
+               vc.loggedUser = safeText
+               vc.modalPresentationStyle = .fullScreen
+               self.navigationController?.pushViewController(vc, animated: true)
+           }
+        }
+    
     }
-    */
 
 }

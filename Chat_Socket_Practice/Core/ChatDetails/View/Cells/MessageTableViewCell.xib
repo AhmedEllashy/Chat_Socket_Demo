@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="63" id="KGk-i7-Jjw" customClass="MessageTableViewCell" customModule="Chat_Socket_Practice" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bao-bb-CNp">
+                        <rect key="frame" x="20" y="0.0" width="280" height="63"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="AHmad" translatesAutoresizingMaskIntoConstraints="NO" id="fru-Bt-mRp">
+                                <rect key="frame" x="0.0" y="10" width="57.666666666666664" height="33"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:06:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zv7-VP-zaR">
+                                <rect key="frame" x="0.0" y="51" width="43.333333333333336" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="fru-Bt-mRp" firstAttribute="top" secondItem="bao-bb-CNp" secondAttribute="top" constant="10" id="CYn-T5-wOn"/>
+                            <constraint firstItem="zv7-VP-zaR" firstAttribute="top" secondItem="fru-Bt-mRp" secondAttribute="bottom" constant="8" id="LSI-6S-WJG"/>
+                            <constraint firstAttribute="bottom" secondItem="zv7-VP-zaR" secondAttribute="bottom" constant="10" id="Xd0-lC-qp1"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="bao-bb-CNp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="FsL-Mr-S5y"/>
+                    <constraint firstAttribute="bottom" secondItem="bao-bb-CNp" secondAttribute="bottom" id="My8-EA-GVZ"/>
+                    <constraint firstAttribute="trailing" secondItem="bao-bb-CNp" secondAttribute="trailing" constant="20" id="SN8-oK-ASx"/>
+                    <constraint firstItem="bao-bb-CNp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ULn-eW-O6f"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="messageDateLabel" destination="zv7-VP-zaR" id="bKk-TA-tAg"/>
+                <outlet property="messageStackView" destination="bao-bb-CNp" id="gJt-3X-fs1"/>
+                <outlet property="messgaeBodyTextView" destination="fru-Bt-mRp" id="yir-UR-4vo"/>
+            </connections>
+            <point key="canvasLocation" x="65.648854961832058" y="-19.366197183098592"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -16,10 +16,19 @@ var kSendMessage = "chatMessage"
 var knewChatMessage = "newChatMessage"
 
 class SocketHelper: NSObject {
+    //MARK: - Properties
     static let shared = SocketHelper()
     private var manager: SocketManager?
     private var socket: SocketIOClient?
+    //MARK: - Life Cycle
     
+    override init() {
+        super.init()
+        self.configSocketClient()
+    }
+    
+    
+    //MARK: - Helpers
     private func configSocketClient(){
         guard let url = URL(string: kHost) else{
             return
@@ -29,12 +38,15 @@ class SocketHelper: NSObject {
             return
         }
         socket = SocketIOClient(manager: manager, nsp: "/**********")
+        print("Debug: Config Completed.")
+
     }
     func startConnection(){
         guard let socket = manager?.defaultSocket else{
             return
         }
         socket.connect()
+        print("Debug: Connection Started.")
     }
     func closeConnection(){
         guard let socket = manager?.defaultSocket else{
@@ -48,6 +60,7 @@ class SocketHelper: NSObject {
               return
           }
         socket.emit(kConnectUser, name)
+        print("Debug: Joined Chat Room.")
         completion()
     }
     
@@ -69,9 +82,11 @@ class SocketHelper: NSObject {
                   let user = results.first as? [[String:Any]] else{
                 return
             }
+
             do {
                 let userData = try JSONSerialization.data(withJSONObject: user)
                 let users = try JSONDecoder().decode([UserModel].self, from: userData)
+                print("Debug: User Gotted Successfully \(users)")
                 completion(users)
             }catch{
                 print("error Occured \(error)")
@@ -82,11 +97,14 @@ class SocketHelper: NSObject {
             
         }
     }
-    func sendMessage(message: String ,with name: String){
+    func sendMessage(message: String ,from name: String){
         guard let socket = manager?.defaultSocket else{
             return
         }
+        print("we r Done!!")
+
         socket.emit(kSendMessage, name, message)
+
     }
     func getMessage(completion: @escaping (_ message: MessageModel?) -> Void){
         guard let socket = manager?.defaultSocket else{
@@ -108,11 +126,12 @@ class SocketHelper: NSObject {
                 completion(message)
                         
             }catch{
-                print("error Occured \(error)")
+                print("Something happen wrong here...\(error)")
                 completion(nil)
             }
 
             
         }
     }
+    
 }
